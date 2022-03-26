@@ -43,10 +43,12 @@ public class RandomController {
             return entity;
         }).map(entity -> {
 
+            //Retorna una lista con determinado rango
             var randomList = (IntStream.range(1,Integer.parseInt(request.getList())+1)
                     .mapToObj(String::valueOf)
                     .collect(Collectors.joining(",")));
 
+            //Retorna la lista con horas aleatorias
             var randomTime = Arrays.stream(randomList.split(","))
                     .map(t -> {
                        var randomTimeEntity = randomService.getRandomTime();
@@ -57,30 +59,6 @@ public class RandomController {
             return entity;
         }).flatMap(randomRepository::save);
     }
-
-     /*entity.setOrginalList(IntStream.range(1,Integer.parseInt(request.getList()))
-                       .mapToObj(String::valueOf)
-                        .collect(Collectors.joining(",")));
-        */
-
-
-
-   /* @PostMapping("")
-    public Mono<Random> post(@RequestBody RequestDTO request) {
-        return Mono.just(new Random()).map(entity -> {
-            entity.setDate(new Date());
-            entity.setOrginalList(request.getList());
-            return entity;
-        }).map(entity -> {
-            var list = Stream.of(request.getList().split(","))
-                .map(p -> p.trim())
-                .collect(Collectors.toList());
-            Collections.shuffle(list);
-            var randomList = list.stream().collect(Collectors.joining(","));
-            entity.setRandomList(randomList);
-            return entity;
-        }).flatMap(randomRepository::save);
-    }*/
 
     @GetMapping("")
     public Flux<Random> get() {

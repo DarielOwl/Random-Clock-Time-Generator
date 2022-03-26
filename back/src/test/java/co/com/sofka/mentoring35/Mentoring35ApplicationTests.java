@@ -8,6 +8,7 @@ class Mentoring35ApplicationTests {
 
 	@Test
 	void contextLoads() {
+
 	}
 
 }

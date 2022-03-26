@@ -48,5 +48,13 @@ public class Random {
         this.randomList = randomList;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Random{" +
+                "date=" + date +
+                ", id='" + id + '\'' +
+                ", orginalList='" + orginalList + '\'' +
+                ", randomList='" + randomList + '\'' +
+                '}';
+    }
 }
